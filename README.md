@@ -29,3 +29,9 @@
 由于 macOS 系统的 bug，安装新版本屏幕保护之后，需要重启一下电脑才可以生效。
 
 改用 SpriteKit 播放视频，支持 HEVC 的 alpha 通道，以显示背景。
+
+## Windows 版本 (实验性)
+
+`windows/` 目录下提供了一份基于 WPF 的屏保实现，逻辑与 macOS 版本一致，
+在资源目录中加载 Snoopy 动画并循环播放。构建后将生成的 `exe` 重命名为
+`scr` 即可在 Windows 上作为屏幕保护程序使用。
