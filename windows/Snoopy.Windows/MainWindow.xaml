@@ -1,0 +1,33 @@
+<Window x:Class="Snoopy.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Snoopy for Windows"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowState="Maximized"
+        Topmost="True"
+        Background="Black"
+        Cursor="None"
+        KeyDown="OnExitInput"
+        MouseDown="OnExitInput"
+        MouseMove="OnExitInput">
+    <Grid>
+        <Rectangle x:Name="BackgroundColorLayer" Fill="#323C2F"/>
+
+        <Image x:Name="PatternLayer"
+               Opacity="0.1"
+               Stretch="Fill"/>
+
+        <Image x:Name="BackgroundImageLayer"
+               Stretch="UniformToFill"
+               VerticalAlignment="Center"
+               Margin="0,120,0,0"/>
+
+        <MediaElement x:Name="VideoLayer"
+                      LoadedBehavior="Manual"
+                      UnloadedBehavior="Manual"
+                      Stretch="UniformToFill"
+                      MediaEnded="OnVideoEnded"
+                      MediaFailed="OnMediaFailed"/>
+    </Grid>
+</Window>

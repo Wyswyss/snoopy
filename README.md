@@ -29,3 +29,46 @@
 由于 macOS 系统的 bug，安装新版本屏幕保护之后，需要重启一下电脑才可以生效。
 
 改用 SpriteKit 播放视频，支持 HEVC 的 alpha 通道，以显示背景。
+
+---
+## Windows 版本（WPF）
+
+我补了一个 Windows 版本的实现，目录在 `windows/`，目标是尽量还原 tvOS / macOS 版本的播放逻辑与视觉层级：
+
+- 随机纯色背景
+- 半色调纹理叠加（`halftone_pattern.png`）
+- 随机背景图
+- 前景视频播放（按 Intro / Loop / Outro 规则组装）
+
+### 目录结构
+
+- `windows/Snoopy.Windows.sln`
+- `windows/Snoopy.Windows/`
+  - `MainWindow.xaml` / `MainWindow.xaml.cs`
+  - `Models/Clip.cs`
+  - `Services/ClipService.cs`
+  - `Services/PlaybackSequenceBuilder.cs`
+  - `Assets/`
+    - `Videos/`（放 `.mov` / `.mp4`）
+    - `Backgrounds/`（放 `.jpg/.jpeg/.png/.webp`）
+    - `Patterns/halftone_pattern.png`
+
+### 运行方式
+
+1. 安装 .NET 8 SDK（Windows）
+2. 在仓库根目录执行：
+
+```bash
+cd windows/Snoopy.Windows
+dotnet run
+```
+
+### 素材放置
+
+从你已经打包好的 macOS Release 素材中提取资源并放入：
+
+- 视频 -> `windows/Snoopy.Windows/Assets/Videos`
+- 背景图 -> `windows/Snoopy.Windows/Assets/Backgrounds`
+- 纹理图 -> `windows/Snoopy.Windows/Assets/Patterns/halftone_pattern.png`
+
+> 注意：Windows 上对带 alpha 的 HEVC `.mov` 兼容性受系统编解码器影响。如果出现透明通道无法显示，可先转码为你机器可播放的格式，或改用支持 alpha 的渲染管线（如 FFmpeg + D3D 方案）。
