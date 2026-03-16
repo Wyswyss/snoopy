@@ -85,3 +85,7 @@ snoopy.xcodeproj/project.xcworkspace/xcuserdata/dillon.xcuserdatad/UserInterface
 snoopy.xcodeproj/xcshareddata/xcschemes/snoopy.xcscheme
 snoopy.xcodeproj/xcuserdata/dillon.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
 snoopy.xcodeproj/xcuserdata/dillon.xcuserdatad/xcschemes/xcschememanagement.plist
+
+# .NET build outputs
+windows/**/bin/
+windows/**/obj/
